@@ -1,3 +1,5 @@
+#from preprocess import *
+
 from __future__ import print_function
 import os
 import argparse
@@ -153,10 +155,12 @@ def get_face(net, ori_img, save_name):
         sim_trans = skimage.transform.estimate_transform('similarity', dst=fd, src=std_points)
         face = skimage.transform.warp(ori_img, sim_trans, output_shape=(IMSIZE, IMSIZE, 3))
         face = (face*255).astype(np.uint8)
+        print(save_name)
         cv2.imwrite(save_name, face)
         return True
     else:
         return False
+
 
 if __name__ == '__main__':
     torch.set_grad_enabled(False)
@@ -176,9 +180,10 @@ if __name__ == '__main__':
 
     resize = 1
     save_idx = 0
-    input_path = './DATASET/input'
+    input_path = './LAV-DF/dev/test'
     output_path = './DATASET/align_output'
     json_path = './DATASET/paths'
+    tar_path = './DATASET/pics'
     video_list = os.listdir(input_path)
     paths = []
     for video in tqdm(video_list):
@@ -197,4 +202,3 @@ if __name__ == '__main__':
                 save_idx += 1
                 paths.append(img_path)
     json.dump(paths, open('./DATASET/paths/out.json', 'w'))
-

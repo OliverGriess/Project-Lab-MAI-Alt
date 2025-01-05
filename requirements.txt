@@ -1,0 +1,13 @@
+bcolz-zipline
+mxnet
+tensorboardX
+matplotlib
+easydict
+opencv-python
+scikit-image
+imgaug
+PyTurboJPEG
+scikit-learn
+termcolor
+prettytable
+timm==0.3.2
