@@ -69,13 +69,17 @@ def main():
         for i in range(dist.shape[0]):
             dist_i = dist[i, : real_lengths[i]]
             windows.append(
-                windows_to_periods(
-                    find_fake_windows(dist_i.detach().cpu().numpy()), frame_rate=25
-                )
+                {
+                    "windows": windows_to_periods(
+                        find_fake_windows(dist_i.detach().cpu().numpy()), frame_rate=25
+                    ),
+                    "file_id": batch["file_id"][i],
+                    "fake_periods": fake_periods[i],
+                    "real_length": real_lengths[i],
+                }
             )
 
         print("windows", windows)
-        print("fake_periods", fake_periods)
 
         break
 
