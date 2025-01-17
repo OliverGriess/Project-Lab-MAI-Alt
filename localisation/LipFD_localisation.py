@@ -1,12 +1,18 @@
 
 
 import argparse
+from sklearn.base import accuracy_score
+from sklearn.metrics import average_precision_score, confusion_matrix
 import torch
 import torchvision.transforms as transforms
 
+from LipFD.data.datasets import AVLip
 from LipFD.models import build_model
+from LipFD.validate import validate
 from dataloader.LAV_DF import create_lav_df_dataloader
 import numpy as np
+
+from localisation.preprocessed_dataloader import Preprocessed_LAVDF
 
 
 def process_chunck(frames, img, crops_tens, chunk_start, chunk_end):
@@ -39,6 +45,30 @@ def process_chunck(frames, img, crops_tens, chunk_start, chunk_end):
             crops_tens[scale_idx][crop_idx] = torch.stack(crops_tens[scale_idx][crop_idx])
 
     return imgs, crops_tens
+def validate(model, loader, gpu_id):
+    print("validating...")
+    device = torch.device(f"cuda:{gpu_id[0]}" if torch.cuda.is_available() else "cpu")
+    with torch.no_grad():
+        y_true, y_pred = [], []
+        for img, crops in loader:
+            img_tens = img.to(device)
+            crops_tens = [[t.to(device) for t in sublist] for sublist in crops]
+            features = model.get_features(img_tens).to(device)
+
+            y_pred.extend(model(crops_tens, features)[0].sigmoid().flatten().tolist())
+            y_true.extend(label.flatten().tolist())
+    y_true = np.array(y_true)
+    y_pred = np.where(np.array(y_pred) >= 0.5, 1, 0)
+
+    # Get AP
+    ap = average_precision_score(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred)
+    tp, fn, fp, tn = cm.ravel()
+    fnr = fn / (fn + tp)
+    fpr = fp / (fp + tn)
+    acc = accuracy_score(y_true, y_pred)
+    return ap, fpr, fnr, acc
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -63,12 +93,17 @@ if __name__ == "__main__":
     model.eval()
     model.to(device)
     
-    
-    data_loader = create_lav_df_dataloader(data_root="/work/scratch/kurse/kurs00079/data/LAV-DF")
+    dataset = Preprocessed_LAVDF(opt)
+    loader = data_loader = torch.utils.data.DataLoader(
+        dataset, batch_size=opt.batch_size, shuffle=True
+    )
+    ap, fpr, fnr, acc = validate(model, loader, gpu_id=[opt.gpu])
+    print(f"acc: {acc} ap: {ap} fpr: {fpr} fnr: {fnr}")
+
     with torch.no_grad():
         scores= []
-        for batch in data_loader:
-            frames = batch["frames"]  # Shape: [# 1, T, C, H, W]
+        for batch in loader:
+            frames = batch["frames"]  # Shape: [# batch size, T, C, H, W]
             labels = batch["n_fakes"]  # Shape: [1]
             img = []
             crops_tens = [[[] for _ in range(5)] for _ in range(3)]  # 3 scales x 2 crop indices
