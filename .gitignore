@@ -1,3 +1,4 @@
 DATASET/*
 checkpoints/*
 PRETRAIN/*
+scores.txt
