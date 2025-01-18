@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Literal
 
 import torch
 import torchvision
@@ -47,11 +48,28 @@ def get_train_list(data_root: str) -> list[dict]:
             {
                 "file_id": file_id,
                 "video_path": video_path,
-                "fake_periods": item["fake_periods"],
-                "n_fakes": item["n_fakes"],
+                **item,
             }
         )
     return train_list, max_fake_periods
+
+
+def get_only_audio_fakes(data):
+    return [item for item in data if item["modify_audio"] and not item["modify_video"]]
+
+
+def get_only_video_fakes(data):
+    return [item for item in data if item["modify_video"] and not item["modify_audio"]]
+
+
+def get_both_fakes(data):
+    return [item for item in data if item["modify_audio"] and item["modify_video"]]
+
+
+def get_real_videos(data):
+    return [
+        item for item in data if not item["modify_audio"] and not item["modify_video"]
+    ]
 
 
 import concurrent.futures
@@ -130,15 +148,37 @@ def read_video(path: str):
     return video, audio, info
 
 
+VIDEO_TYPES = Literal["real", "only_audio_fake", "only_video_fake", "both_fake", "all"]
+
+
 class LAV_DF(Dataset):
 
     def __init__(
         self,
         data_root: str,
+        split: Literal["train", "test"] = "train",
+        target_video_length: int = TARGET_LENGTH,
+        video_type: VIDEO_TYPES = "real",
     ):
         self.data_root = data_root
+        self.split = split
         self.train_list, self.max_fake_periods = get_train_list(self.data_root)
 
+        match video_type:
+            case "real":
+                self.train_list = get_real_videos(self.train_list)
+            case "only_audio_fake":
+                self.train_list = get_only_audio_fakes(self.train_list)
+            case "only_video_fake":
+                self.train_list = get_only_video_fakes(self.train_list)
+            case "both_fake":
+                self.train_list = get_both_fakes(self.train_list)
+            case "all":
+                pass
+            case _:
+                raise ValueError(f"Invalid video type: {video_type}")
+
+        self.target_video_length = target_video_length
         self.video_transforms = transforms.Compose(
             [
                 SquareVideo(),
@@ -148,18 +188,21 @@ class LAV_DF(Dataset):
             ]
         )
 
-    def _pad_video(self, video: Tensor, target_length: int = TARGET_LENGTH) -> Tensor:
+    def _pad_video(
+        self, video: Tensor, target_video_length: int | None = None
+    ) -> Tensor:
         """
         Pads a video to have target_length number of frames by repeating the last frame
 
         Args:
             video (torch.Tensor): Tensor has shape (num_frames, height, width, channels).
-            target_length (int): Desired number of frames.
+            target_video_length (int): Desired number of frames.
 
         Returns:
             torch.Tensor: A tensor of shape (target_length, height, width, channels).
         """
         num_frames, height, width, channels = video.shape
+        target_length = target_video_length or self.target_video_length
 
         assert num_frames > 0, "Video has no frames"
 
@@ -219,11 +262,19 @@ def create_lav_df_dataloader(
     data_root: str,
     batch_size: int = 8,
     num_workers: int = 4,
+    video_type: VIDEO_TYPES = "real",
+    target_video_length: int = TARGET_LENGTH,
+    split: Literal["train", "test"] = "train",
 ):
     """
     Create a DataLoader for the LAV-DF dataset
     """
-    dataset = LAV_DF(data_root=data_root)
+    dataset = LAV_DF(
+        data_root=data_root,
+        split=split,
+        video_type=video_type,
+        target_video_length=target_video_length,
+    )
 
     dataloader = DataLoader(
         dataset,
