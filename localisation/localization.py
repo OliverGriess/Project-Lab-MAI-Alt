@@ -12,6 +12,59 @@ import torch
 from LipFD.models import build_model
 from dataloader.LAV_DF import LAV_DF, create_lav_df_dataloader
 from localisation.preprocessed_dataloader import Preprocessed_LAVDF
+def hysteresis_threshold_1d(scores, low_thr, high_thr):
+    """
+    Apply hysteresis thresholding on a 1D array of scores.
+
+    Parameters
+    ----------
+    scores : 1D list or numpy array of floats
+        The scores (e.g. deep-fake likelihood) in [0, 1].
+    low_thr : float
+        The lower threshold for hysteresis.
+    high_thr : float
+        The upper threshold for hysteresis.
+
+    Returns
+    -------
+    labels : numpy array of int
+        An array of the same length as 'scores'.
+        labels[i] = 1 --> fake
+        labels[i] = 0 --> real
+    """
+    scores = np.array(scores, dtype=float)
+    n = len(scores)
+
+    # Step 1: Initialize labels to 0 (real)
+    labels = np.zeros(n, dtype=int)
+
+    # Step 2: Mark definitely fake (>= high_thr) as 1
+    labels[scores >= high_thr] = 1
+
+    # Step 3: Mark uncertain/floating values (-1) where low_thr <= score < high_thr
+    uncertain_mask = (scores >= low_thr) & (scores < high_thr)
+    labels[uncertain_mask] = -1
+
+    # Step 4: Expand fake regions into uncertain neighbors until no more changes
+    changed = True
+    while changed:
+        changed = False
+        for i in range(n):
+            if labels[i] == 1:
+                # Check left neighbor
+                if i > 0 and labels[i - 1] == -1:
+                    labels[i - 1] = 1
+                    changed = True
+                # Check right neighbor
+                if i < n - 1 and labels[i + 1] == -1:
+                    labels[i + 1] = 1
+                    changed = True
+
+    # Step 5: All remaining -1 become 0 (real)
+    labels[labels == -1] = 0
+
+    return labels
+
 
 def validate(model, loader, gpu_id):
     print("validating...")
@@ -30,7 +83,8 @@ def validate(model, loader, gpu_id):
             y_true.extend(label.flatten().tolist())
             i+=1
     y_true = np.array(y_true)
-    y_pred = np.where(np.array(y_pred) >= 0.5, 1, 0)
+    np.savetxt("/work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/y_true.txt", y_true, fmt='%f')
+    y_pred = hysteresis_threshold_1d(y_pred,0.3,0.7)
 
     # Get AP
     ap = average_precision_score(y_true, y_pred)
