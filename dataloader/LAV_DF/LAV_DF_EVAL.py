@@ -1,4 +1,3 @@
-import json
 import math
 import os
 from typing import Literal
@@ -13,6 +12,7 @@ from torchvision.transforms import v2 as T
 from torchvision.transforms.functional import InterpolationMode
 from tqdm import tqdm
 
+from dataloader.LAV_DF.utils import read_json
 from dataloader.video_transforms import (
     NormalizeVideo,
     ResizeVideo,
@@ -28,9 +28,7 @@ MAX_FRAMES = MAX_VIDEO_LENGTH_IN_SECONDS * FRAME_RATE
 TARGET_LENGTH = AVG_VIDEO_LENGTH_IN_SECONDS * FRAME_RATE
 
 
-def read_json(path: str, object_hook=None):
-    with open(path, "r") as f:
-        return json.load(f, object_hook=object_hook)
+
 
 
 def get_train_list(data_root: str) -> list[dict]:
@@ -40,8 +38,6 @@ def get_train_list(data_root: str) -> list[dict]:
     for item in metadata_json:
         video_path = os.path.join(data_root, item["file"])
         file_id = video_path.split("/")[-1].split(".")[0]
-        if not "test" in video_path:
-            continue
         if not os.path.exists(video_path):
             continue
         max_fake_periods = max(max_fake_periods, len(item["fake_periods"]))

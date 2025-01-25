@@ -12,6 +12,7 @@ from torchvision.transforms import v2 as T
 from torchvision.transforms.functional import InterpolationMode
 from tqdm import tqdm
 
+from dataloader.LAV_DF.utils import read_json
 from dataloader.video_transforms import (
     NormalizeVideo,
     ResizeVideo,
@@ -27,9 +28,6 @@ MAX_FRAMES = MAX_VIDEO_LENGTH_IN_SECONDS * FRAME_RATE
 TARGET_LENGTH = AVG_VIDEO_LENGTH_IN_SECONDS * FRAME_RATE
 
 
-def read_json(path: str, object_hook=None):
-    with open(path, "r") as f:
-        return json.load(f, object_hook=object_hook)
 
 
 def get_train_list(data_root: str) -> list[dict]:

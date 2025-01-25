@@ -1,4 +1,4 @@
-source /work/scratch/kurse/kurs00079/om43juhy/conda/anaconda3/bin/activate LipFD
-export PYTHONPATH=/work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/:$PYTHONPATH
-python /work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/localisation/localization.py
+ml gcc/8 python/3.10
+source ../mai/bin/activate
+python ./LipFD/train.py
 deactivate
