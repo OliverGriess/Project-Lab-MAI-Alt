@@ -1,0 +1,316 @@
+ERROR:3@1040.113] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:3@1040.113] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010205.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010196.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010187.mp4 due to insufficient frames or audio.
+[ERROR:10@1040.122] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:10@1040.122] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010199.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010205.mp4 due to insufficient frames or audio.
+[ERROR:8@1040.127] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:8@1040.127] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010140.mp4
+[ERROR:0@1040.135] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:0@1040.135] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010198.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010199.mp4 due to insufficient frames or audio.
+[ERROR:13@1040.142] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:13@1040.142] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010200.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010140.mp4 due to insufficient frames or audio.
+[ERROR:5@1040.148] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:5@1040.148] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010203.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010198.mp4 due to insufficient frames or audio.
+[ERROR:6@1040.155] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:6@1040.155] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010210.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010200.mp4 due to insufficient frames or audio.
+[ERROR:14@1040.161] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:14@1040.161] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010212.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010203.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010210.mp4 due to insufficient frames or audio.
+[ERROR:12@1040.168] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:12@1040.168] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010214.mp4
+[ERROR:1@1040.173] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:1@1040.173] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010212.mp4 due to insufficient frames or audio.
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010217.mp4
+[ERROR:15@1040.180] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:15@1040.180] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010173.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010214.mp4 due to insufficient frames or audio.
+Processing:   7%|█████████▊                                                                                                                            | 9979/136304 [17:11<14:05, 149.35file/s]Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010217.mp4 due to insufficient frames or audio.
+[ERROR:10@1040.188] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:10@1040.188] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010220.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010173.mp4 due to insufficient frames or audio.
+[ERROR:8@1040.196] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:8@1040.196] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010170.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010220.mp4 due to insufficient frames or audio.
+[ERROR:0@1040.204] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:0@1040.204] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010221.mp4
+[ERROR:13@1040.211] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:13@1040.211] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010181.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010170.mp4 due to insufficient frames or audio.
+[ERROR:5@1040.217] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:5@1040.217] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010175.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010221.mp4 due to insufficient frames or audio.
+[ERROR:3@1040.222] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:3@1040.222] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010168.mp4
+[ERROR:14@1040.229] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:14@1040.229] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010192.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010181.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010175.mp4 due to insufficient frames or audio.
+[ERROR:12@1040.236] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:12@1040.236] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010204.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010168.mp4 due to insufficient frames or audio.
+[ERROR:4@1040.245] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:4@1040.245] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010150.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010192.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010204.mp4 due to insufficient frames or audio.
+[ERROR:7@1040.252] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:7@1040.252] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010149.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010150.mp4 due to insufficient frames or audio.
+[ERROR:2@1040.260] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:2@1040.260] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010208.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010149.mp4 due to insufficient frames or audio.
+[ERROR:8@1040.267] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:8@1040.267] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010207.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010208.mp4 due to insufficient frames or audio.
+[ERROR:0@1040.275] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:0@1040.275] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010189.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010207.mp4 due to insufficient frames or audio.
+[ERROR:1@1040.281] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:1@1040.281] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010206.mp4
+[ERROR:5@1040.286] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:5@1040.287] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010197.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010189.mp4 due to insufficient frames or audio.
+Processing:   7%|█████████▊                                                                                                                            | 9994/136304 [17:11<14:22, 146.53file/s][ERROR:3@1040.291] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:3@1040.291] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010222.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010206.mp4 due to insufficient frames or audio.
+[ERROR:14@1040.297] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:14@1040.297] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010230.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010197.mp4 due to insufficient frames or audio.
+[ERROR:6@1040.304] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:6@1040.304] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010190.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010222.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010230.mp4 due to insufficient frames or audio.
+[ERROR:11@1040.311] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:11@1040.311] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010162.mp4
+[ERROR:9@1040.318] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:9@1040.318] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010139.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010190.mp4 due to insufficient frames or audio.
+[ERROR:13@1040.326] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:13@1040.326] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010162.mp4 due to insufficient frames or audio.
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010201.mp4
+[ERROR:15@1040.333] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:15@1040.333] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010209.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010139.mp4 due to insufficient frames or audio.
+[ERROR:12@1040.339] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:12@1040.339] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010229.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/test/010201.mp4 due to insufficient frames or audio.
+[ERROR:1@1040.344] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:1@1040.344] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010233.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010209.mp4 due to insufficient frames or audio.
+[ERROR:5@1040.350] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:5@1040.350] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010226.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010229.mp4 due to insufficient frames or audio.
+[ERROR:3@1040.355] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:3@1040.355] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010235.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010233.mp4 due to insufficient frames or audio.
+[ERROR:14@1040.362] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:14@1040.362] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010224.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010235.mp4 due to insufficient frames or audio.
+[ERROR:6@1040.368] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:6@1040.368] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010236.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010226.mp4 due to insufficient frames or audio.
+[ERROR:11@1040.375] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:11@1040.375] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010213.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010224.mp4 due to insufficient frames or audio.
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010236.mp4 due to insufficient frames or audio.
+[ERROR:9@1040.381] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:9@1040.381] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010237.mp4
+[ERROR:13@1040.387] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:13@1040.387] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010238.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010213.mp4 due to insufficient frames or audio.
+[ERROR:15@1040.394] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:15@1040.394] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010239.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010237.mp4 due to insufficient frames or audio.
+Processing:   7%|█████████▊                                                                                                                           | 10011/136304 [17:11<13:54, 151.40file/s][ERROR:12@1040.399] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:12@1040.399] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010240.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010238.mp4 due to insufficient frames or audio.
+[ERROR:1@1040.405] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:1@1040.405] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010241.mp4
+[ERROR:3@1040.411] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:3@1040.411] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+[ERROR:5@1040.416] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:5@1040.416] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+[ERROR:14@1040.423] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:14@1040.423] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010245.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010244.mp4
+[ERROR:7@1040.430] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:7@1040.430] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010242.mp4
+[ERROR:11@1040.436] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:11@1040.436] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+[ERROR:9@1040.443] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:9@1040.443] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Audio extraction error: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010239.mp4, segment [None,None]: ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 8 (Debian 8.3.0-6)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gmp --enable-libgme --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libdav1d --enable-libxvid --enable-libzvbi --enable-libzimg
+  libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+  libpostproc    58.  1.100 / 58.  1.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/work/scratch/kurse/kurs00079/data/LAV-DF/train/010239.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf58.29.100
+  Duration: 00:00:05.82, start: 0.000000, bitrate: 158 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 224x224 [SAR 1:1 DAR 1:1], 80 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 16000 Hz, mono, fltp, 71 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to 'pipe:1':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    ISFT            : Lavf61.1.100
+  Stream #0:0(und): Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 pcm_s16le
+[out#0/wav @ 0x7cbc9c0] video:0KiB audio:182KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.041853%
+size=     182KiB time=00:00:05.82 bitrate= 256.1kbits/s speed=2e+03x    
+Exiting normally, received signal 2.
+[ERROR:13@1040.449] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:13@1040.449] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010234.mp4
+
+[ERROR:4@1040.457] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:4@1040.457] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+[ERROR:2@1040.465] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:2@1040.465] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010215.mp4
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010239.mp4 due to insufficient frames or audio.
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010243.mp4
+[ERROR:10@1040.474] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:10@1040.474] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+[ERROR:6@1040.481] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:6@1040.481] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Audio extraction error: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010240.mp4, segment [None,None]: ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 8 (Debian 8.3.0-6)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-debug --disable-ffplay --disable-indev=sndio --disable-outdev=sndio --cc=gcc --enable-fontconfig --enable-frei0r --enable-gnutls --enable-gmp --enable-libgme --enable-gray --enable-libaom --enable-libfribidi --enable-libass --enable-libvmaf --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-librubberband --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libvorbis --enable-libopus --enable-libtheora --enable-libvidstab --enable-libvo-amrwbenc --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libdav1d --enable-libxvid --enable-libzvbi --enable-libzimg
+  libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+  libpostproc    58.  1.100 / 58.  1.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x70c3000] Could not find codec parameters for stream 0 (Video: h264 (avc1 / 0x31637661), none, 224x224, 72 kb/s): unspecified pixel format
+Consider increasing the value for the 'analyzeduration' (0) and 'probesize' (5000000) options
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/work/scratch/kurse/kurs00079/data/LAV-DF/train/010240.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf58.29.100
+  Duration: 00:00:06.40, start: 0.000000, bitrate: 147 kb/s
+  Stream #0:0[0x1](und): Video: h264 (avc1 / 0x31637661), none, 224x224, 72 kb/s, SAR 1:1 DAR 1:1, 25 fps, 25 tbr, 12800 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (mp4a / 0x6134706D), 16000 Hz, mono, fltp, 68 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to 'pipe:1':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    ISFT            : Lavf61.1.100
+  Stream #0:0(und): Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 pcm_s16le
+[out#0/wav @ 0x70f97c0] video:0KiB audio:200KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.038086%
+size=     200KiB time=00:00:06.40 bitrate= 256.1kbits/s speed= 257x    
+Exiting normally, received signal 2.
+[ERROR:0@1040.490] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:0@1040.490] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010228.mp4
+[ERROR:8@1040.498] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:8@1040.498] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010211.mp4
+[ERROR:15@1040.507] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:15@1040.507] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010225.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010232.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010227.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/test/010202.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010246.mp4
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010223.mp4
+
+Skipping /work/scratch/kurse/kurs00079/data/LAV-DF/train/010240.mp4 due to insufficient frames or audio.
+[ERROR:12@1040.598] global cap_ffmpeg_impl.hpp:1278 open Could not open codec h264, error: -11
+[ERROR:12@1040.598] global cap_ffmpeg_impl.hpp:1286 open VIDEOIO/FFMPEG: Failed to initialize VideoCapture
+Cannot open video: /work/scratch/kurse/kurs00079/data/LAV-DF/train/010248.mp4

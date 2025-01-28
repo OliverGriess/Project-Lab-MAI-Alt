@@ -1,0 +1,8 @@
+# conda environments:
+#
+                         /home/kurse/kurs00079/om43juhy/anaconda3
+base                  *  /work/scratch/kurse/kurs00079/om43juhy/conda/anaconda3
+LipFD                    /work/scratch/kurse/kurs00079/om43juhy/conda/anaconda3/envs/LipFD
+
+Active Conda environment:
+Python executable: /work/scratch/kurse/kurs00079/om43juhy/conda/anaconda3/envs/LipFD/bin/python

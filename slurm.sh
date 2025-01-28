@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH -J hello_world
 # Please check paths (directories have to exist beforehand):
-#SBATCH -e /work/scratch/kurse/kurs00079/ng33rete/new_approach/test.err
-#SBATCH -o /work/scratch/kurse/kurs00079/ng33rete/new_approach/test.out
+#SBATCH -e /work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/test.err
+#SBATCH -o /work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/test.out
 #
 # CPU specification
 #SBATCH -n 1 # 1 process
 #SBATCH -c 4 # 4 CPU cores per process
 # can be referenced as $SLURM_CPUS_PER_TASK?~@~K in the "payload" part
-#SBATCH --mem-per-cpu=1750 # Hauptspeicher in MByte pro Rechenkern
+#SBATCH --mem-per-cpu=16000       # Hauptspeicher in MByte pro Rechenkern
 #SBATCH -t 01:30:00 # in hours:minutes, or '#SBATCH -t 10' - just minutes
 #SBATCH -A kurs00079
 #SBATCH -p kurs00079
@@ -26,6 +26,9 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 nvidia-smi 1>&2
 # if your program supports this way of getting told how many GPUs to use:
 export CUDA_NUM_DEVICES=$SLURM_GPUS_ON_NODE
+eval "$(conda shell.bash hook)"
+conda env list
+conda activate LipFD
 ./run.sh
 EXITCODE=$?
 # any cleanup and copy commands:

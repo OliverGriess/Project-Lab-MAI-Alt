@@ -9,16 +9,71 @@ import subprocess
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
+import sqlite3
+
+# Create a database and table
+conn = sqlite3.connect("metadata.db")
+cursor = conn.cursor()
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS metadata (
+    window_start_idx INTEGER,
+    window_end_idx INTEGER,
+    fake_indices TEXT,
+    window_path TEXT,
+    video_path TEXT
+)
+""")
+conn.commit()
+WINDOW_LEN =5
+# Insert metadata
+def save_to_db(start_idx, fake_indices, out_path, video_path):
+    cursor.execute("""
+    INSERT INTO metadata (window_start_idx, window_end_idx, fake_indices, window_path, video_path)
+    VALUES (?, ?, ?, ?, ?)
+    """, (start_idx, start_idx + WINDOW_LEN - 1, str(fake_indices), out_path, video_path))
+    conn.commit()
+# Batch insert metadata
+metadata_batch = []
+
+def save_to_db_batch(start_idx, fake_indices, out_path, video_path):
+    global metadata_batch
+    metadata_batch.append((
+        start_idx, 
+        start_idx + WINDOW_LEN - 1, 
+        str(fake_indices), 
+        out_path, 
+        str(video_path)
+    ))
+    # Insert in batches of 100 for efficiency
+    if len(metadata_batch) >= 100:
+        cursor.executemany("""
+        INSERT INTO metadata (window_start_idx, window_end_idx, fake_indices, window_path, video_path)
+        VALUES (?, ?, ?, ?, ?)
+        """, metadata_batch)
+        conn.commit()
+        metadata_batch = []
+
+def finalize_db_batch():
+    global metadata_batch
+    if metadata_batch:  # Insert remaining data
+        cursor.executemany("""
+        INSERT INTO metadata (window_start_idx, window_end_idx, fake_indices, window_path, video_path)
+        VALUES (?, ?, ?, ?, ?)
+        """, metadata_batch)
+        conn.commit()
+        metadata_batch = []
+
+
 ############################
 # Custom Parameters
 ############################
 WINDOW_LEN = 5        # Frames in each window
-MAX_WORKERS = 16       # Number of threads
+MAX_WORKERS = 16     # Number of threads
 SAMPLE_RATE = 16000
 OUTPUT_SIZE = (500, 500)
 OUTPUT_ROOT = "/work/scratch/kurse/kurs00079/data/LAVDF-LIPFD"  # Root dir for saving
 METADATA_JSON = "/work/scratch/kurse/kurs00079/data/LAV-DF/metadata.json"
-
+metadata = []
 ############################
 # Create output root if needed
 os.makedirs(OUTPUT_ROOT, exist_ok=True)
@@ -32,8 +87,10 @@ def extract_audio_segment(video_path, start_t=None, end_t=None, sr=SAMPLE_RATE):
     Returns a 1D numpy array (float32) and sampling rate.
     If start_t/end_t are None, extracts the entire audio.
     """
+    ffmpeg_exe = "/work/scratch/kurse/kurs00079/om43juhy/Project-Lab-MAI-Alt/ffmpeg-7.0.2-amd64-static/ffmpeg"
+
     # Use ffmpeg directly (assumes it's in PATH)
-    cmd = ["ffmpeg", "-y"]
+    cmd = [ffmpeg_exe, "-y"]
     
     # Add segment timing options if provided
     if start_t is not None:
@@ -164,7 +221,7 @@ def get_all_frames(video_path):
     cap.release()
     return frames, fps, frame_count
 
-def save_windows_as_images(frames, fake_frames,mel_spectrogram, output_dir, base_name,video_path):
+def save_windows_as_images(frames, fake_frames, mel_spectrogram, output_dir, base_name, video_path):
     """
     Replicates the original approach:
       - computes windows of frames
@@ -223,20 +280,8 @@ def save_windows_as_images(frames, fake_frames,mel_spectrogram, output_dir, base
         group_id = i 
         out_path = os.path.join(output_dir, f"{base_name}_{group_id}.png")
         plt.imsave(out_path, combined)
-        with open("/work/scratch/kurse/kurs00079/data/LAVDF-LIPFD/metadata.json", 'r') as json_file:
-            data = json.load(json_file)
-        window_info = {
-        "window_start_idx": start_idx,
-        "window_end_idx": start_idx + WINDOW_LEN - 1,
-        "fake_indices": fake_indices,
-        "window_path": out_path,
-        "video_path": str(video_path),
-        }
-        data.append(window_info)
+        save_to_db_batch(start_idx, fake_indices, out_path, video_path)
 
-        # Write the updated data back to the JSON file
-        with open("/work/scratch/kurse/kurs00079/data/LAVDF-LIPFD/metadata.json", 'w') as json_file:
-            json.dump(data, json_file, indent=4)
 
 def process_entry(entry):
     """
@@ -298,13 +343,24 @@ def main():
         metadata = json.load(f)
     # For testing purposes, limit to first 5 entries
     futures = []
-    with open("/work/scratch/kurse/kurs00079/data/LAVDF-LIPFD/metadata.json", 'w') as json_file:
-        json.dump([], json_file, indent=4)
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        for entry in metadata:
-            futures.append(executor.submit(process_entry, entry))
-        for _ in tqdm(as_completed(futures), total=len(futures), desc="Processing", unit="file"):
-            pass
+    print(len(metadata))
+
+    CHUNK_SIZE = 6000  # Number of entries to process per chunk
+    NEW_METAJSON = "/work/scratch/kurse/kurs00079/data/LAVDF-LIPFD/metadata.json"
+    with open(NEW_METAJSON, 'w') as f:
+        json.dump([], f, indent=4)  # Write an empty array to the file
+    for i in range(132000, len(metadata), CHUNK_SIZE):
+        chunk = metadata[i:i + CHUNK_SIZE]  # Extract a chunk of CHUNK_SIZE entries
+        futures = []
+
+        # Use ThreadPoolExecutor for processing the chunk
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            for entry in chunk:
+                futures.append(executor.submit(process_entry, entry))
+            # Use tqdm to monitor progress
+            for _ in tqdm(as_completed(futures), total=len(futures), desc=f"starting from  {i}", unit="file"):
+                pass
+        finalize_db_batch()
 
 if __name__ == "__main__":
     main()
