@@ -1,0 +1,5 @@
+Using cuda 0 for inference.
+Model loaded.
+Using  10803  real and  10803  fake images in  val  set
+validating...
+acc: 0.6265389243728594 ap: 0.6134373014026996 fpr: 0.7138757752476164 fnr: 0.03304637600666482
