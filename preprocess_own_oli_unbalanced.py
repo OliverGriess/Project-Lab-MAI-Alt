@@ -7,15 +7,15 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from librosa import feature as audio
-import uuid  # For generating unique file names
-import random
+import uuid
 
 ############ Custom parameter ##############
-WINDOW_LEN = 5 
+WINDOW_LEN = 5
+STRIDE = 1   
 
 audio_root = ""
 video_root = ""
-metadata_path = ""
+metadata_path = "metadata.json"
 output_root = ""
 MAX_THREADS = 1
 SET = "dev/"
@@ -46,19 +46,11 @@ def process_directories():
     if not os.path.exists("./temp"):
         os.makedirs("./temp", exist_ok=True)
 
-    output_real_dir = os.path.join(output_root, "0_real")
-    output_fake_dir = os.path.join(output_root, "1_fake")
-
-    if not os.path.exists(output_real_dir):
-        os.makedirs(output_real_dir, exist_ok=True)
-    if not os.path.exists(output_fake_dir):
-        os.makedirs(output_fake_dir, exist_ok=True)
-
     with open(metadata_path, 'r') as f:
         metadata = json.load(f)
 
     metadata_dict = {entry["file"]: entry for entry in metadata}
-
+    
     tasks = []
     with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
         future_to_video = {}
@@ -111,69 +103,47 @@ def process_video_and_audio(video_path, audio_path, output_real_dir, output_fake
         current_frame += 1
 
     video_capture.release()
-
+    
     # Generate a unique file name for the spectrogram
     temp_spectrogram_path = f"./temp/mel_{uuid.uuid4().hex}.png"
     get_spectrogram(audio_path, temp_spectrogram_path)
     mel = plt.imread(temp_spectrogram_path) * 255
     mel = mel.astype(np.uint8)
     os.remove(temp_spectrogram_path)
-
+    
     mapping = mel.shape[1] / frame_count
-    fake_samples = []
-    true_samples = []
+    sample_indices = list(range(0, frame_count - WINDOW_LEN + 1, STRIDE))
+    
+    process_samples(video_path, frame_list, mel, sample_indices, mapping, output_real_dir, output_fake_dir, fake_periods, fps)
 
-    # Identify fake and true windows
-    for i in range(0, frame_count - WINDOW_LEN + 1, WINDOW_LEN):
+def process_samples(video_path, frame_list, mel, sample_indices, mapping, output_real_dir, output_fake_dir, fake_periods, fps):
+    group = 0
+    video_name = os.path.basename(video_path).split('.')[0]
+    for i in sample_indices:
         fake_count = 0
         first_frame_fake = False
         for j in range(i, i + WINDOW_LEN):
-            is_frame_fake = False
             for period in fake_periods:
                 start_frame = int(period[0] * fps)
                 end_frame = int(period[1] * fps)
                 if start_frame <= j < end_frame:
-                    is_frame_fake = True
+                    fake_count += 1
+                    if j == i:
+                        first_frame_fake = True
                     break
-            if is_frame_fake:
-                fake_count += 1
-            if j == i and is_frame_fake:
-                first_frame_fake = True
 
-        if fake_count > 0:
-            fake_samples.append((i, fake_count, first_frame_fake))
-        else:
-            true_samples.append(i)
-
-    # Balance true samples to match fake samples count
-    true_samples = random.sample(true_samples, min(len(true_samples), len(fake_samples)))
-
-    # Process fake samples
-    process_samples(video_path, frame_list, mel, fake_samples, mapping, output_fake_dir, is_fake=True)
-
-    # Process true samples
-    process_samples(video_path, frame_list, mel, true_samples, mapping, output_real_dir, is_fake=False)
-
-def process_samples(video_path, frame_list, mel, sample_indices, mapping, output_dir, is_fake=False):
-    group = 0
-    for item in sample_indices:
-
-        # naming scheme for number of fake frames per video
-        if is_fake:
-            i, fake_count, first_frame_fake = item
-            suffix = f"_{fake_count}" if not first_frame_fake else f"_-{fake_count}"
-        else:
-            i = item
-            suffix = f"_0"
-
+        is_fake = fake_count > 0
+        output_dir = output_fake_dir if is_fake else output_real_dir
+        suffix = f"_{-fake_count}" if first_frame_fake else f"_{fake_count}" if is_fake else "_0"
+        
         try:
             begin = int(np.round(i * mapping))
             end = int(np.round((i + WINDOW_LEN) * mapping))
             sub_mel = cv2.resize(mel[:, begin:end], (500 * WINDOW_LEN, 500))
             x = np.concatenate(frame_list[i:i + WINDOW_LEN], axis=1)
             combined = np.concatenate((sub_mel[:, :, :3], x[:, :, :3]), axis=0)
-
-            output_path = os.path.join(output_dir, f"{os.path.basename(video_path).split('.')[0]}_{group}{suffix}.png")
+            
+            output_path = os.path.join(output_dir, f"{video_name}_{group}{suffix}.png")
             plt.imsave(output_path, combined)
             group += 1
         except ValueError:
