@@ -127,16 +127,7 @@ if __name__ == "__main__":
     ap_calculator = AP(iou_thresholds=[0.5, 0.75, 0.95])
     print(ap_calculator(predictions, labels))
 
-    ar_calculator = AR(100)
-    print(ar_calculator(predictions, labels))
-
-    ar_calculator = AR(50)
-    print(ar_calculator(predictions, labels))
-
-    ar_calculator = AR(20)
-    print(ar_calculator(predictions, labels))
-
-    ar_calculator = AR(10)
+    ar_calculator = AR(n_proposals_list=[10, 20, 50, 100])
     print(ar_calculator(predictions, labels))
     
     fpr, fnr = calculate_fpr_fnr(predictions, labels)
