@@ -115,12 +115,28 @@ class TimeSeriesClustering:
         hyst_labels_06 = hysteresis_threshold_1d(scores=scores,low_thr=0.6,high_thr=0.8)
         gaus_score = gaussian_filter1d(scores, sigma=1.6)
         
+        # Add moving average calculation
+        window_size = 5  # You can adjust this window size as needed
+        ma_score = np.convolve(scores, np.ones(window_size)/window_size, mode='same')
+        
         gaus_dbscan_labels, _ = self.dbscan_cluster(gaus_score, **dbscan_params)
         gaus_hdbscan_labels, _ = self.hdbscan_cluster(gaus_score, **hdbscan_params)
         gaus_flasc_labels, _ = self.flasc_cluster(gaus_score, **(self.flasc_params or {}))
+        
+        # Add moving average versions of the clustering algorithms
+        ma_dbscan_labels, _ = self.dbscan_cluster(ma_score, **dbscan_params)
+        ma_hdbscan_labels, _ = self.hdbscan_cluster(ma_score, **hdbscan_params)
+        ma_flasc_labels, _ = self.flasc_cluster(ma_score, **(self.flasc_params or {}))
+        
         hyst_labels_gaus_02 = hysteresis_threshold_1d(scores=gaus_score,low_thr=0.2,high_thr=0.6)
         hyst_labels_gaus_04 = hysteresis_threshold_1d(scores=gaus_score,low_thr=0.4,high_thr=0.8)
         hyst_labels_gaus_06 = hysteresis_threshold_1d(scores=gaus_score,low_thr=0.6,high_thr=0.8)
+        
+        # Add moving average versions of the hysteresis thresholding
+        hyst_labels_ma_02 = hysteresis_threshold_1d(scores=ma_score,low_thr=0.2,high_thr=0.6)
+        hyst_labels_ma_04 = hysteresis_threshold_1d(scores=ma_score,low_thr=0.4,high_thr=0.8)
+        hyst_labels_ma_06 = hysteresis_threshold_1d(scores=ma_score,low_thr=0.6,high_thr=0.8)
+        
         ddm = []
         for subscore in scores:
             ddm.append(DriftDetectionMethod(0.9, 3).cluster(subscore))
@@ -137,16 +153,23 @@ class TimeSeriesClustering:
             'gaus_dbscan': gaus_dbscan_labels,
             'gaus_hdbscan': gaus_hdbscan_labels,
             'gaus_flasc': gaus_flasc_labels,
+            'ma_dbscan': ma_dbscan_labels,
+            'ma_hdbscan': ma_hdbscan_labels, 
+            'ma_flasc': ma_flasc_labels,
             'gaus_naive': gaus_score,
+            'ma_naive': ma_score,
             'naive': binary_scores,
             'sliding_window15': sliding_window_labels15,
-            'hyst02':hyst_labels_02,
-            'hyst04':hyst_labels_04,
-            'hyst06':hyst_labels_06,
-            'hyst_gaus02':hyst_labels_gaus_02,
-            'hyst_gaus04':hyst_labels_gaus_04,
-            'hyst_gaus06':hyst_labels_gaus_06,
-            "ddm":ddm
+            'hyst02': hyst_labels_02,
+            'hyst04': hyst_labels_04,
+            'hyst06': hyst_labels_06,
+            'hyst_gaus02': hyst_labels_gaus_02,
+            'hyst_gaus04': hyst_labels_gaus_04,
+            'hyst_gaus06': hyst_labels_gaus_06,
+            'hyst_ma02': hyst_labels_ma_02,
+            'hyst_ma04': hyst_labels_ma_04,
+            'hyst_ma06': hyst_labels_ma_06,
+            "ddm": ddm
         }
 
 
@@ -376,17 +399,22 @@ def evaluate_whole_dataset(videos: List[List[float]], labels: List[List[int]], t
 
     tsc_instance = TimeSeriesClustering.load_all(tsc_model_path)
 
-    # Extended methods list to include the new "sliding_window"
-    clustering_methods = ["dbscan", "hdbscan", "flasc", "naive","gaus_dbscan", "gaus_hdbscan", "gaus_flasc", "gaus_naive", "sliding_window15","hyst02","hyst_gaus02","hyst04","hyst_gaus04","hyst06","hyst_gaus06","ddm"]
-    
     evaluation_results = {}
-    method_predictions = {method: [] for method in clustering_methods}
+    # We'll initialize method_predictions after we get the first prediction 
+    # to dynamically capture all available methods
+    method_predictions = None
 
     # Generate predictions for all videos
     print("\n[INFO] Generating predictions for all methods...")
-    for video_scores in tqdm(videos, desc="Processing videos"):
+    for idx, video_scores in enumerate(tqdm(videos, desc="Processing videos")):
         pred_dict = tsc_instance.predict_all(video_scores)
         
+        # For the first video, initialize method_predictions with all available methods
+        if idx == 0:
+            clustering_methods = list(pred_dict.keys())
+            method_predictions = {method: [] for method in clustering_methods}
+        
+        # Store predictions for each method
         for method in clustering_methods:
             selected_preds = pred_dict.get(method)
             if selected_preds is not None:
