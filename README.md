@@ -112,7 +112,7 @@ The localization module provides several approaches for deepfake localization:
 3. **Hysteresis Thresholding** (`hysteresis_tresholding.py`):
    - Implements adaptive thresholding
 
-To run localization: (TODO: Skript durch Argparse erweitern)
+To run localization:
 
 ```bash
 python src/localize/run_full_eval.py
