@@ -13,6 +13,9 @@ src/
 │   ├── eval/                # Evaluation scripts
 │   ├── options/             # Configuration options
 │   └── checkpoints/         # Model checkpoints
+├── DDRCF/   
+│   ├── finetune_predict.py  # Finetuning and evaluation             
+│   └── checkpoints/         # Model checkpoints
 ├── localize/                
 │   ├── TimeSerieClustering.py  # Time series clustering and localization method comparison implementation
 │   ├── DDM.py                  # Drift Detection implementation

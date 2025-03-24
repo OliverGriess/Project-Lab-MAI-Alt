@@ -225,9 +225,9 @@ class TimeSeriesClustering:
             predictions[f'hyst_ma_{moving_average_window_size}_{low_thr}_{high_thr}'] = hyst_labels
 
         ddm = []
+        concept_detection = DriftDetectionMethod(**ddm_params.to_dict())
         for subscore in scores:
-            ddm.append(DriftDetectionMethod(
-                **ddm_params.to_dict()).cluster(subscore))
+            ddm.append(concept_detection.cluster(subscore))
 
         predictions['ddm'] = ddm
 
