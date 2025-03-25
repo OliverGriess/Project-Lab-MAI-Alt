@@ -140,7 +140,7 @@ If you use this code in your research, please cite:
   doi = {},
   month = {3},
   title = {{Weakly Supervised Deepfake Localization Pipeline}},
-  url = {https://github.com/github-linguist/linguist},
+  url = {https://github.com/OliverGriess/Project-Lab-MAI-Alt},
   year = {2025}
 }
 ```
